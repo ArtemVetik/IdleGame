@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Agava.IdleGame
@@ -8,12 +9,31 @@ namespace Agava.IdleGame
 
         protected override bool CanInteract(StackPresenter enteredStack)
         {
-            return _selfStack.CanAddToStack() && enteredStack.Count > 0;
+            if (enteredStack.Count == 0)
+                return false;
+
+            foreach (var item in enteredStack.Data)
+                if (_selfStack.CanAddToStack(item.Layer))
+                    return true;
+
+            return false;
         }
 
         protected override void InteractAction(StackPresenter enteredStack)
         {
-            var stackable = enteredStack.RemoveAt(0);
+            int index = 0;
+            foreach (var item in enteredStack.Data)
+            {
+                if (_selfStack.CanAddToStack(item.Layer))
+                    break;
+
+                index++;
+            }
+
+            if (index >= enteredStack.Count)
+                throw new InvalidOperationException();
+
+            var stackable = enteredStack.RemoveAt(index);
             _selfStack.AddToStack(stackable);
         }
     }

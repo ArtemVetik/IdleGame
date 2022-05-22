@@ -8,7 +8,7 @@ namespace Agava.IdleGame
 
         protected override bool CanInteract(StackPresenter enteredStack)
         {
-            return enteredStack.CanAddToStack();
+            return enteredStack.CanAddToStack(_template.Layer);
         }
 
         protected override void InteractAction(StackPresenter enteredStack)

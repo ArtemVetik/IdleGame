@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Agava.IdleGame.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Agava.IdleGame
 {
@@ -9,6 +10,7 @@ namespace Agava.IdleGame
     {
         [SerializeField] private StackView _view;
         [SerializeField] private int _capacity;
+        [SerializeField] public StackableLayerMask _stackableTypes;
 
         private StackStorage _stack;
 
@@ -17,6 +19,7 @@ namespace Agava.IdleGame
 
         public int Count => _stack.Count;
         public int Capacity => _capacity;
+        public IEnumerable<StackableObject> Data => _stack.Data;
 
         private void OnValidate()
         {
@@ -25,12 +28,12 @@ namespace Agava.IdleGame
 
         private void Awake()
         {
-            _stack = new StackStorage(_capacity);
+            _stack = new StackStorage(_capacity, _stackableTypes);
         }
 
-        public bool CanAddToStack()
+        public bool CanAddToStack(int layer)
         {
-            return _stack.CanAdd();
+            return _stack.CanAdd(layer);
         }
 
         public bool CanRemoveFromStack(StackableObject stackable)
@@ -40,7 +43,7 @@ namespace Agava.IdleGame
 
         public void AddToStack(StackableObject stackable)
         {
-            if (CanAddToStack() == false)
+            if (CanAddToStack(stackable.Layer) == false)
                 throw new InvalidOperationException();
 
             _stack.Add(stackable);

@@ -443,8 +443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e582a818e877db49b532b0b29474bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackView: {fileID: 1233362904}
-  _stackCapacity: 10
+  _view: {fileID: 1233362904}
+  _capacity: 10
+  _stackableTypes:
+    _value: -1
 --- !u!1 &498940496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1079,7 @@ MonoBehaviour:
     _value: 0
   _size: {x: 2, y: 5, z: 4}
   _distanceBetweenObjects: {x: 0.6, y: 0.6, z: 0.6}
+  _drawGizmos: 1
 --- !u!1 &1455195432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,8 +1394,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140da3603717c8d4da294ce8810af370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stackView: {fileID: 1440320955}
-  _stackCapacity: 24
+  _view: {fileID: 1440320955}
+  _capacity: 24
+  _stackableTypes:
+    _value: 12
 --- !u!1 &1834652059
 GameObject:
   m_ObjectHideFlags: 0

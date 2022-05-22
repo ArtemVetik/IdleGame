@@ -7,13 +7,17 @@ namespace Agava.IdleGame.Model
     {
         private readonly List<StackableObject> _data = new List<StackableObject>();
         private readonly int _capacity;
+        private readonly StackableLayerMask _stackableTypes;
 
         public int Count => _data.Count;
         public int Capacity => _capacity;
+        public IEnumerable<StackableObject> Data => _data;
 
-        public StackStorage(int capacity)
+        public StackStorage(int capacity, StackableLayerMask stackableTypes)
         {
             _capacity = capacity;
+            _stackableTypes = stackableTypes;
+
             _data = new List<StackableObject>(capacity);
         }
 
@@ -22,7 +26,7 @@ namespace Agava.IdleGame.Model
 
         public void Add(StackableObject stackable)
         {
-            if (CanAdd() == false)
+            if (CanAdd(stackable.Layer) == false)
                 throw new InvalidOperationException(nameof(stackable) + " can't be added");
             
             _data.Add(stackable);
@@ -48,9 +52,10 @@ namespace Agava.IdleGame.Model
             return stackable;
         }
 
-        public bool CanAdd()
+        public bool CanAdd(int layer)
         {
-            return _data.Count < _capacity;
+            return _data.Count < _capacity && 
+                ((_stackableTypes.Value & (1 << layer)) == (1 << layer));
         }
 
         public bool Contains(StackableObject stackableObject)
