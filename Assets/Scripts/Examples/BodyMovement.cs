@@ -6,7 +6,7 @@ namespace Agava.IdleGame.Examples
     public class BodyMovement : MonoBehaviour
     {
         [SerializeField] private float _speed = 0.2f;
-        [SerializeField] private Joystick _joystic;
+        [SerializeField] private PlayerInput _input;
 
         private Rigidbody _body;
 
@@ -17,7 +17,7 @@ namespace Agava.IdleGame.Examples
 
         private void Update()
         {
-            var rawDirection = new Vector3(_joystic.Direction.x, 0, _joystic.Direction.y);
+            var rawDirection = new Vector3(_input.Direction.x, 0, _input.Direction.y);
             _body.velocity = rawDirection * _speed;
 
             transform.LookAt(transform.position + rawDirection);
