@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layers:
   - Default Stackable
-  - Stackable1
-  - Stackable2
-  - Stackable3
-  - Stackable4
+  - Orange Cube
+  - Red Cube
+  - 
+  - 
   - 
   - 
   - 

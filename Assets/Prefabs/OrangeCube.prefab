@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 543396356951963322}
   - component: {fileID: 543396356951963319}
   m_Layer: 0
-  m_Name: StackableCube
+  m_Name: OrangeCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,4 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5398d5bf44892341a6be00b9b68ed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layer: 3
+  _layer: 1
