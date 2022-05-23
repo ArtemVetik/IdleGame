@@ -11,7 +11,7 @@ namespace Agava.IdleGame
     {
         [SerializeField] private Transform _container;
         [SerializeField] private float _animationDuration = 0.15f;
-        [Header("Settings")]
+        [Header("Add Settings")]
         [SerializeField] private FloatSetting _scalePunch = new FloatSetting(true, 1.1f);
         [SerializeField] private FloatSetting _jumpPower = new FloatSetting(false, 0f);
 
