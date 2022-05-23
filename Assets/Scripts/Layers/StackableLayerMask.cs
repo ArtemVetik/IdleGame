@@ -10,8 +10,8 @@ namespace Agava.IdleGame
 
         [SerializeField] private int _value;
 
-        public int Value => _value;
         public static string[] Layers => _layersAsset.Layers;
+        public int Value => _value;
 
         public static string LayerToName(int layer)
         {
@@ -21,6 +21,11 @@ namespace Agava.IdleGame
         public static int NameToLayer(string name)
         {
             return _layersAsset.NameToLayer(name);
+        }
+
+        public bool ContainsLayer(int layer)
+        {
+            return (_value & (1 << layer)) != 0;
         }
     }
 }

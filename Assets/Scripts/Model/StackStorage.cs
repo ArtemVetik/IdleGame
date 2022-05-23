@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Agava.IdleGame.Model
@@ -61,6 +62,11 @@ namespace Agava.IdleGame.Model
         public bool Contains(StackableObject stackableObject)
         {
             return _data.Contains(stackableObject);
+        }
+
+        public bool Contains(int layer)
+        {
+            return _data.Any(stackable => stackable.Layer == layer);
         }
     }
 }

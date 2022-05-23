@@ -7,7 +7,7 @@ namespace Agava.IdleGame
 {
     public abstract class StackInteractableZone : MonoBehaviour
     {
-        [SerializeField] private float _interactionTime;
+        [SerializeField] private float _interactionTime = 0.1f;
         [SerializeField] private Trigger<StackPresenter> _trigger;
 
         private Timer _timer = new Timer();

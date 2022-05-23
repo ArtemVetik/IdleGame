@@ -41,6 +41,11 @@ namespace Agava.IdleGame
             return _stack.Contains(stackable);
         }
 
+        public bool CanRemoveFromStack(int layer)
+        {
+            return _stack.Contains(layer);
+        }
+
         public void AddToStack(StackableObject stackable)
         {
             if (CanAddToStack(stackable.Layer) == false)
