@@ -3,7 +3,7 @@ using Agava.IdleGame;
 
 namespace Agava.IdleGameEditor
 {
-    [CustomEditor(typeof(StackableObjectPresenter))]
+    [CustomEditor(typeof(StackPresenter))]
     public class StackablePresenterEditor : LayerObjectEditor
     { }
 }

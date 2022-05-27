@@ -4,6 +4,7 @@ namespace Agava.IdleGame
 {
     public class ObjectProducerZone : StackInteractableZone
     {
+        [Header("Produced template")]
         [SerializeField] private StackableObjectPresenter _template;
 
         protected override bool CanInteract(StackPresenter enteredStack)
