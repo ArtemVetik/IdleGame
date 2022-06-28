@@ -18,7 +18,7 @@ namespace Agava.IdleGame.Examples
         private void Update()
         {
             var rawDirection = new Vector3(_input.Direction.x, 0, _input.Direction.y);
-            _body.velocity = rawDirection * _speed;
+            _body.velocity = rawDirection * _speed + Vector3.up * _body.velocity.y;
 
             transform.LookAt(transform.position + rawDirection);
         }
