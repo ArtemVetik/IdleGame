@@ -14,7 +14,8 @@ namespace Agava.IdleGame.Model
             _dynamicCost = new DynamicCost(totalCost);
         }
 
-        public event Action Unlocked;
+        public event Action CostUpdated;
+        public event Action<bool> Unlocked;
 
         public int TotalCost => _dynamicCost.TotalCost;
         public int CurrentCost => _dynamicCost.CurrentCost;
@@ -22,9 +23,10 @@ namespace Agava.IdleGame.Model
         public void ReduceCost(int value)
         {
             _dynamicCost.Subtract(value);
+            CostUpdated?.Invoke();
 
             if (_dynamicCost.CurrentCost == 0)
-                Unlocked?.Invoke();
+                Unlocked?.Invoke(false);
         }
 
         protected override void OnLoad(BuyZone loadedObject)
@@ -32,7 +34,7 @@ namespace Agava.IdleGame.Model
             _dynamicCost = loadedObject._dynamicCost;
 
             if (_dynamicCost.CurrentCost == 0)
-                Unlocked?.Invoke();
+                Unlocked?.Invoke(true);
         }
     }
 }
